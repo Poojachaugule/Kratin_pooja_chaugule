@@ -1,0 +1,13 @@
+import time
+from plyer import notification
+def medication_reminder(interval):
+    while True:
+        notification.notify(
+            title="medication Reminder",
+            message="It's time to  take your medication!",
+            timeout=10
+            )
+        time.sleep(interval*60)
+reminder_interval=30
+medication_reminder(reminder_interval)
+        
