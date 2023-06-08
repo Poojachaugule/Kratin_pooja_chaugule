@@ -1,13 +1,66 @@
 import time
 from plyer import notification
+
+# Diet plan suggestions
+def suggest_diet_plan(age, gender):
+    if age >= 65 and gender == "female":
+        return "A balanced diet with plenty of fruits, vegetables, lean proteins, and whole grains is recommended. Avoid processed foods and limit salt and sugar intake."
+    else:
+        return "Please consult a nutritionist for personalized diet recommendations."
+
+# Yoga suggestions
+def suggest_yoga(age):
+    if age >= 65:
+        return "Gentle yoga exercises such as chair yoga, gentle stretching, and breathing exercises can help improve flexibility, balance, and overall well-being."
+    else:
+        return "Please consult a yoga instructor for suitable yoga exercises based on your age and health condition."
+
+# BMI calculator
+def calculate_bmi(weight, height):
+    bmi = weight / (height ** 2)
+    return round(bmi, 2)
+
+# Medication reminder
 def medication_reminder(interval):
     while True:
         notification.notify(
-            title="medication Reminder",
-            message="It's time to  take your medication!",
+            title="Medication Reminder",
+            message="It's time to take your medication!",
             timeout=10
-            )
-        time.sleep(interval*60)
-reminder_interval=30
-medication_reminder(reminder_interval)
+        )
+        time.sleep(interval * 60)  # Convert minutes to seconds
+
+# Main function
+def main():
+    # Sunita's details
+    age = 65
+    gender = "female"
+    weight = 70  # in kilograms
+    height = 1.65  # in meters
+    reminder_interval = 4  # in minutes
+
+    # Diet plan suggestion
+    diet_plan = suggest_diet_plan(age, gender)
+    print("Diet Plan Suggestions:")
+    print(diet_plan)
+    print()
+
+    # Yoga suggestion
+    yoga_suggestion = suggest_yoga(age)
+    print("Yoga Suggestions:")
+    print(yoga_suggestion)
+    print()
+
+    # BMI calculation
+    bmi = calculate_bmi(weight, height)
+    print("BMI Calculation:")
+    print("Your BMI is:", bmi)
+    print()
+
+    # Medication reminder
+    medication_reminder(reminder_interval)
+
+# Run the main function
+if __name__ == "__main__":
+    main()
         
